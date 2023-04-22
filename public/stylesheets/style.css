@@ -1,9 +1,35 @@
 body {
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    font-family: 'Mukta Malar', Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #F5F9FF;  
+}
+  input{
+    display: flex;
+    min-width: 30vh;
+    padding: 1vh;
+    margin: 1vh;
+    justify-content: center;
+    align-items: center;
   }
   
   a {
     color: #00B7FF;
+  }
+
+  div.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a.footer{
+    display: flex;
+    margin: 1vh;
+    justify-content: center;
+    align-items: center;
   }
   

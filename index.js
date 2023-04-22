@@ -53,6 +53,16 @@ app.use(passport.session())
 
 // app configs.
 app.db = db;
+async function seed(){
+  const hashedPassword = await bcrypt.hash(process.env.PASSWORD, 10)
+  users.push({
+      id: Date.now().toString(),
+      name: process.env.NAME,
+      email: process.env.EMAIL,
+      password: hashedPassword
+  });
+}
+seed().then(()=> console.log(users));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(morgan("dev"));
@@ -60,6 +70,8 @@ app.use(cors());
 app.use('/',indexRouter);
 app.use('/todos',todoRouter);
 app.use('/api-docs',checkAuthenticated,swaggerUI.serve,swaggerUI.setup(docs));
+app.use(express.static(__dirname + '/public'));
+
 
 //initialize the app.
 async function initialize(){    
@@ -71,12 +83,6 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true
   }))
-
-// app.post('/login', 
-//   passport.authenticate('local', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     res.redirect('/');
-//   });
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login.jade')

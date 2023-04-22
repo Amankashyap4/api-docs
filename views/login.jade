@@ -3,21 +3,19 @@ extends layout
 block content
   #wrapper
     #logo
-        img(src='images/logo.png')
+        img(src='images/logo.png' width=200)
 
     #display
         #login        
             form(method='post')
-                | Enter your name if you want to post an article
+                | Login with email
                 div
-                    input(type='text', name='email')
-                    br
-                    input(type='text', name='password')
-                    br
+                    input(type='text', placeholder="Email" name='email')
+                    input(type='text', placeholder="password" name='password')
                     input(type='submit', value='Log In')
         
     #footer
-        div Copyright © Hexafold Tech #{+new Date().getFullYear()}  
-        a(href='/page?name=about') About 
-        | |  
-        a(href='/page?name=contact') Contact Us
+        div(class='footer') Copyright © Hexafold Tech #{+new Date().getFullYear()}  
+        div(class='footer')
+            a(class='footer' href='/page?name=about') About 
+            a(class='footer' href='/page?name=contact') Contact Us
