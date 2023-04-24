@@ -19,9 +19,9 @@ jobs:
       - name: Run test
         run: npm test
     
-       - name: Build & Push Docker image
-         uses: mr-smithers-excellent/docker-build-push@v3
-         with:
+      - name: Build & Push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v3
+        with:
             image: amnkashyap/nova-api-docs-swagger                                        #amnkashyap/angularproject
             tag: latest                                    #projectcicd
             registry: docker.io
