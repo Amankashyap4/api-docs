@@ -6,4 +6,4 @@ COPY package*.json ./
 
 EXPOSE 3001
 
-CMD ["node run dev"]
+CMD ["npm run dev"]
